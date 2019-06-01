@@ -1,0 +1,8 @@
+#compdef dtoken
+
+_dtoken() {
+  _arguments "1: :($(containers))" 
+
+}
+
+_dtoken "$@"

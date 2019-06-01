@@ -1,0 +1,7 @@
+#compdef ktoken
+
+_ktoken() {
+  _arguments "1: :($(pods))" 
+}
+
+_ktoken "$@"
