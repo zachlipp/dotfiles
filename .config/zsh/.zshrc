@@ -27,6 +27,9 @@
     antigen apply
 # }
 
+# Aliases
+source .aliases.zsh
+
 # Misc
 fpath=(~/.config/zsh/completions $fpath)
 source ~/.fzf.zsh
