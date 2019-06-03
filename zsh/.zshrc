@@ -31,6 +31,5 @@
 source .aliases.zsh
 
 # Misc
-fpath=(~/zsh/completions $fpath)
 source ~/.fzf.zsh
 source <(kubectl completion zsh)
