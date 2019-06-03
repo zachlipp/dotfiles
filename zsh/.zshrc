@@ -28,7 +28,7 @@
 # }
 
 # Aliases
-source .aliases.zsh
+source ~/.aliases.zsh
 
 # Misc
 source ~/.fzf.zsh
