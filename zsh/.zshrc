@@ -28,9 +28,8 @@
 # }
 
 # Aliases
-source .aliases.zsh
+source ~/.aliases.zsh
 
 # Misc
-fpath=(~/.config/zsh/completions $fpath)
 source ~/.fzf.zsh
 source <(kubectl completion zsh)

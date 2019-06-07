@@ -161,5 +161,4 @@ bar {
 exec --no-startup-id compton                                                                            
                                                                                                         
 # Background                                                                                            
-exec_always --no-startup-id feh --bg-scale http://getwallpapers.com/wallpaper/full/d/3/1/718503-large-ch
-icago-skyline-wallpaper-1920x1080-1920x1080-laptop.jpg     
+exec_always --no-startup-id feh --bg-scale http://getwallpapers.com/wallpaper/full/d/3/1/718503-large-chicago-skyline-wallpaper-1920x1080-1920x1080-laptop.jpg     
