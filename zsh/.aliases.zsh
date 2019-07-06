@@ -39,3 +39,7 @@ clean_history () {
       strings .zsh_history_bad > .zsh_history && \
       fc -R .zsh_history
 }
+
+ignore_py() {
+  curl https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore > .gitignore
+}
