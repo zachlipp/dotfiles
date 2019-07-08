@@ -5,7 +5,6 @@
     antigen use oh-my-zsh
 
     # Bundles
-    antigen bundle autojump
     antigen bundle colored-man-pages
     antigen bundle colorize
     antigen bundle docker
