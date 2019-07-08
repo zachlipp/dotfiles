@@ -46,7 +46,6 @@ bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
@@ -162,3 +161,6 @@ exec --no-startup-id compton
                                                                                                         
 # Background                                                                                            
 exec_always --no-startup-id feh --bg-scale http://getwallpapers.com/wallpaper/full/d/3/1/718503-large-chicago-skyline-wallpaper-1920x1080-1920x1080-laptop.jpg     
+
+# lock
+bindsym $mod+l exec i3lock-fancy
