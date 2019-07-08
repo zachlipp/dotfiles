@@ -20,7 +20,9 @@
     antigen bundle zsh-users/zsh-syntax-highlighting
 
     # Load the theme
-    antigen theme denysdovhan/spaceship-prompt 
+    # https://github.com/zsh-users/antigen/issues/675#issuecomment-452764451
+    THEME=denysdovhan/spaceship-prompt 
+    antigen list | grep $THEME; if [ $? -ne 0 ]; then antigen theme $THEME; fi
 
     # Tell Antigen that you're done
     antigen apply
