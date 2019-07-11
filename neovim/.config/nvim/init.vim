@@ -1,20 +1,23 @@
+"For sharing"
 set nocompatible
 
 call plug#begin()
-Plug 'Chiel92/vim-autoformat'
-Plug 'Raimondi/delimitMate'
-Plug 'kaicataldo/material.vim'
-Plug 'Valloric/YouCompleteMe'
-Plug 'sbdchd/neoformat'
-Plug 'mrk21/yaml-vim'
+  Plug 'Raimondi/delimitMate'
+  Plug 'rakr/vim-one'
+  Plug 'Valloric/YouCompleteMe'
+  Plug 'sbdchd/neoformat'
+  Plug 'mrk21/yaml-vim'
 call plug#end()
 
 filetype plugin indent on
 set tabstop=2
 set shiftwidth=2
 set expandtab
+
+colorscheme one
 set background=dark
-colorscheme material
+
+let g:airline_theme='one'
 
 if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
@@ -27,8 +30,6 @@ endif
 if (has("termguicolors"))
   set termguicolors
 endif
-
-let g:material_theme_style = 'dark'
 
 let g:neoformat_python_black = { 
     \ 'exe': 'black',
