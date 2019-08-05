@@ -4,7 +4,8 @@ set nocompatible
 call plug#begin()
   Plug 'Raimondi/delimitMate'
   Plug 'rakr/vim-one'
-  Plug 'Valloric/YouCompleteMe'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'deoplete-plugins/deoplete-jedi'
   Plug 'sbdchd/neoformat'
   Plug 'mrk21/yaml-vim'
 call plug#end()
@@ -41,6 +42,9 @@ let g:neoformat_enabled_python = ['black']
 let g:neoformat_enabled_yaml = ['prettier']
 
 let g:neoformat_basic_format_trim = 1
+
+let g:deoplete#enable_at_startup = 1
+
 
 autocmd BufWritePre *.py Neoformat
 autocmd BufWritePre *.yaml Neoformat
