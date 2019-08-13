@@ -8,6 +8,7 @@ call plug#begin()
   Plug 'deoplete-plugins/deoplete-jedi'
   Plug 'sbdchd/neoformat'
   Plug 'mrk21/yaml-vim'
+  Plug 'heavenshell/vim-pydocstring' 
 call plug#end()
 
 filetype plugin indent on
@@ -48,3 +49,5 @@ let g:deoplete#enable_at_startup = 1
 
 autocmd BufWritePre *.py Neoformat
 autocmd BufWritePre *.yaml Neoformat
+
+nmap <silent> <C-d> <Plug>(pydocstring)
