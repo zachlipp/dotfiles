@@ -1,3 +1,9 @@
+case $OSTYPE 
+  in "darwin"*)
+     export PATH=$PATH:/usr/local/bin
+   ;;
+esac
+
 # antigen {
     source ~/antigen.zsh 
 
