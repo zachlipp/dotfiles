@@ -2,14 +2,6 @@ alias cat=bat
 alias vi=nvim
 alias vim=nvim
 
-pbcopy() {
-  xclip -selection clipboard
-}
-
-pbaste() {
-  xclip -selection clipboard -o
-}
-
 rmc() {
   docker ps -aq | xargs docker rm
 }
