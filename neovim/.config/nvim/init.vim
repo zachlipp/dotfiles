@@ -2,6 +2,7 @@
 set nocompatible
 
 call plug#begin()
+  Plug 'scrooloose/nerdtree'
   Plug 'Raimondi/delimitMate'
   Plug 'rakr/vim-one'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -61,3 +62,4 @@ autocmd BufWritePre *.py Neoformat
 autocmd BufWritePre *.yaml Neoformat
 
 nmap <silent> <C-d> <Plug>(pydocstring)
+nmap <silent> <C-n> :NERDTreeToggle<CR>
