@@ -34,9 +34,16 @@ esac
     antigen apply
 # }
 
+# Configure theme
+SPACESHIP_NODE_SHOW=false
+SPACESHIP_PACKAGE_SHOW=false
+SPACESHIP_DOCKER_SHOW=false
+
 # Aliases
 source ~/.aliases.zsh
 
 # Misc
 source ~/.fzf.zsh
+autoload -Uz compinit
+compinit
 source <(kubectl completion zsh)
