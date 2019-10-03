@@ -9,6 +9,8 @@ call plug#begin()
   Plug 'sbdchd/neoformat'
   Plug 'mrk21/yaml-vim'
   Plug 'heavenshell/vim-pydocstring' 
+  Plug 'editorconfig/editorconfig-vim'
+  Plug 'stsewd/isort.nvim'
 call plug#end()
 
 filetype plugin indent on
@@ -33,12 +35,20 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
+let g:neoformat_run_all_formatters = 1
 let g:neoformat_python_black = { 
     \ 'exe': 'black',
     \ 'stdin': 1,
-    \ 'args': ['-l 79', '--quiet', '-' ]}
+    \ 'args': ['-l 79', '--quiet', '-' ],
+    \ }
 
-let g:neoformat_enabled_python = ['black']
+let g:neoformat_python_isort = {
+    \ 'exe': 'isort',
+    \ 'args': ['-'],
+    \ 'stdin': 1,
+    \ }
+
+let g:neoformat_enabled_python = ['isort', 'black']
 
 let g:neoformat_enabled_yaml = ['prettier']
 
