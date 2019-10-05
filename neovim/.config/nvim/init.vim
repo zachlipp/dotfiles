@@ -58,7 +58,7 @@ let g:neoformat_basic_format_trim = 1
 let g:deoplete#enable_at_startup = 1
 
 
-autocmd BufWritePre *.py Neoformat
+"autocmd BufWritePre *.py Neoformat
 autocmd BufWritePre *.yaml Neoformat
 
 nmap <silent> <C-d> <Plug>(pydocstring)
