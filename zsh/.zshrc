@@ -1,6 +1,6 @@
 case $OSTYPE 
   in "darwin"*)
-     export PATH=$PATH:/usr/local/bin
+     export PATH=$PATH:/usr/local/bin:/Applications/Postgres.app/Contents/Versions/latest/bin
    ;;
 esac
 
