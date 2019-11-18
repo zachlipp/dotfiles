@@ -7,6 +7,7 @@ call plug#begin()
   Plug 'rakr/vim-one'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'deoplete-plugins/deoplete-jedi'
+  Plug 'davidhalter/jedi-vim'
   Plug 'sbdchd/neoformat'
   Plug 'mrk21/yaml-vim'
   Plug 'heavenshell/vim-pydocstring' 
@@ -18,6 +19,7 @@ filetype plugin indent on
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set clipboard^=unnamed
 
 colorscheme one
 set background=dark
@@ -56,7 +58,8 @@ let g:neoformat_enabled_yaml = ['prettier']
 let g:neoformat_basic_format_trim = 1
 
 let g:deoplete#enable_at_startup = 1
-
+let g:jedi#goto_command = "<leader>d"
+let g:jedi#completions_enabled = 0
 
 "autocmd BufWritePre *.py Neoformat
 autocmd BufWritePre *.yaml Neoformat
