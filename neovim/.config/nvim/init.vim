@@ -13,6 +13,7 @@ call plug#begin()
   Plug 'heavenshell/vim-pydocstring' 
   Plug 'editorconfig/editorconfig-vim'
   Plug 'stsewd/isort.nvim'
+  Plug 'APZelos/blamer.nvim'
 call plug#end()
 
 filetype plugin indent on
@@ -61,6 +62,9 @@ let g:deoplete#enable_at_startup = 1
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#completions_enabled = 0
 
+let g:blamer_enabled = 1
+let g:blamer_delay = 1000
+let g:blamer_template = '<committer> <commit-short> <summary>'
 "autocmd BufWritePre *.py Neoformat
 autocmd BufWritePre *.yaml Neoformat
 
