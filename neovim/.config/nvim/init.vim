@@ -53,9 +53,14 @@ let g:neoformat_python_isort = {
     \ }
 
 let g:neoformat_enabled_python = ['isort', 'black']
+let g:neoformat_sql_sqlformat = {
+    \ 'exe': 'sqlformat',
+    \ 'args': ['-k upper', '--comma_first 1', '-i lower', '--indent_after_first', '-r', '-'],
+    \ 'stdin': 1,
+    \ }
 
 let g:neoformat_enabled_yaml = ['prettier']
-
+let g:neoformat_enabled_sql = ['sqlformat']
 let g:neoformat_basic_format_trim = 1
 
 let g:deoplete#enable_at_startup = 1
