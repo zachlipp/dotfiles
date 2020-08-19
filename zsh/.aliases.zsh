@@ -1,4 +1,5 @@
-alias cat=bat
+alias cat=bat --plain
+alias bat=bat --plain
 alias vi=nvim
 alias vim=nvim
 

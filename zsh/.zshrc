@@ -1,9 +1,3 @@
-case $OSTYPE 
-  in "darwin"*)
-     export PATH=$PATH:/usr/local/bin:/Applications/Postgres.app/Contents/Versions/latest/bin
-   ;;
-esac
-
 # antigen {
     source ~/antigen.zsh 
 
@@ -15,6 +9,7 @@ esac
     antigen bundle colorize
     antigen bundle docker
     antigen bundle git
+    antigen bundle gradle
     antigen bundle pip
     antigen bundle python
     antigen bundle taskwarrior
@@ -38,6 +33,9 @@ esac
 SPACESHIP_NODE_SHOW=false
 SPACESHIP_PACKAGE_SHOW=false
 SPACESHIP_DOCKER_SHOW=false
+SPACESHIP_KUBECTL_SHOW=true
+SPACESHIP_KUBECTL_VERSION_SHOW=false
+SPACESHIP_TIME_SHOW=true
 
 # Aliases
 source ~/.aliases.zsh
