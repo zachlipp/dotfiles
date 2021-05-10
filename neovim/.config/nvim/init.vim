@@ -12,6 +12,7 @@ call plug#begin()
   Plug 'heavenshell/vim-pydocstring' 
   Plug 'editorconfig/editorconfig-vim'
   Plug 'stsewd/isort.nvim'
+  Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 filetype plugin indent on
@@ -19,10 +20,10 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
-colorscheme one
+colorscheme nord
 set background=dark
 
-let g:airline_theme='one'
+"let g:airline_theme='one'
 
 if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
