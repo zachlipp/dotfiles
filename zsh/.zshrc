@@ -1,8 +1,13 @@
-case $OSTYPE 
-  in "darwin"*)
-     export PATH=$PATH:/usr/local/bin:/Applications/Postgres.app/Contents/Versions/latest/bin
-   ;;
-esac
+# Go configuration
+# GOPATH=$HOME/go
+# GOBIN=$GOPATH/bin
+
+export PATH=/usr/local/opt/ruby/bin:$PATH
+export PATH=/Users/zlipp/.gem/ruby/2.6.0/bin:$PATH
+export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/go/bin:$PATH
+export PATH=/Users/zlipp/Library/Python/3.9/bin:$PATH
+export PATH=/Library/TeX/texbin:$PATH
 
 # antigen {
     source ~/antigen.zsh 
@@ -38,6 +43,8 @@ esac
 SPACESHIP_NODE_SHOW=false
 SPACESHIP_PACKAGE_SHOW=false
 SPACESHIP_DOCKER_SHOW=false
+
+
 
 # Aliases
 source ~/.aliases.zsh
