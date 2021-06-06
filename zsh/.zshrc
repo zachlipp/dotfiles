@@ -20,6 +20,7 @@ export PATH=/Library/TeX/texbin:$PATH
     antigen bundle colorize
     antigen bundle docker
     antigen bundle git
+    antigen bundle gradle
     antigen bundle pip
     antigen bundle python
     antigen bundle taskwarrior
@@ -43,6 +44,9 @@ export PATH=/Library/TeX/texbin:$PATH
 SPACESHIP_NODE_SHOW=false
 SPACESHIP_PACKAGE_SHOW=false
 SPACESHIP_DOCKER_SHOW=false
+SPACESHIP_KUBECTL_SHOW=true
+SPACESHIP_KUBECTL_VERSION_SHOW=false
+SPACESHIP_TIME_SHOW=true
 
 
 

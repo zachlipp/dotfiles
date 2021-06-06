@@ -17,6 +17,7 @@ call plug#begin()
   Plug 'fatih/vim-go'
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
   Plug 'APZelos/blamer.nvim'
+  Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 filetype plugin indent on
@@ -25,10 +26,10 @@ set shiftwidth=2
 set expandtab
 set clipboard^=unnamed
 
-colorscheme one
+colorscheme nord
 set background=dark
 
-let g:airline_theme='one'
+"let g:airline_theme='one'
 
 if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
