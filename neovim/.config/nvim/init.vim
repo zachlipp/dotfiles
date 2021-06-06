@@ -7,6 +7,7 @@ call plug#begin()
   Plug 'rakr/vim-one'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'deoplete-plugins/deoplete-jedi'
+  Plug 'davidhalter/jedi-vim'
   Plug 'sbdchd/neoformat'
   Plug 'mrk21/yaml-vim'
   Plug 'heavenshell/vim-pydocstring' 
@@ -15,12 +16,14 @@ call plug#begin()
   Plug 'jpalardy/vim-slime'
   Plug 'fatih/vim-go'
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'APZelos/blamer.nvim'
 call plug#end()
 
 filetype plugin indent on
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set clipboard^=unnamed
 
 colorscheme one
 set background=dark
@@ -53,17 +56,26 @@ let g:neoformat_python_isort = {
     \ }
 
 let g:neoformat_enabled_python = ['isort', 'black']
+let g:neoformat_sql_sqlformat = {
+    \ 'exe': 'sqlformat',
+    \ 'args': ['-k upper', '--comma_first 1', '-i lower', '--indent_after_first', '-r', '-'],
+    \ 'stdin': 1,
+    \ }
 
 let g:neoformat_enabled_yaml = ['prettier']
-
+let g:neoformat_enabled_sql = ['sqlformat']
 let g:neoformat_basic_format_trim = 1
-
-"let g:deoplete#enable_at_startup = 1
-
 let g:slime_python_ipython = 1
 
 
 autocmd BufWritePre *.py Neoformat
+let g:deoplete#enable_at_startup = 1
+let g:jedi#goto_command = "<leader>d"
+let g:jedi#completions_enabled = 0
+
+let g:blamer_enabled = 1
+let g:blamer_delay = 1000
+let g:blamer_template = '<committer> <commit-short> <summary>'
 autocmd BufWritePre *.yaml Neoformat
 
 nmap <silent> <C-d> <Plug>(pydocstring)
