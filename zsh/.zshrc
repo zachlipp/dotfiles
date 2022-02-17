@@ -62,3 +62,8 @@ source ~/.fzf.zsh
 autoload -Uz compinit
 compinit
 source <(kubectl completion zsh)
+
+# Pyenv
+source ~/.iterm2_shell_integration.zsh
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
