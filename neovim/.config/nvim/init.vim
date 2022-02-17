@@ -39,6 +39,7 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
+" let g:neoformat_verbose = 1
 let g:neoformat_run_all_formatters = 1
 let g:neoformat_python_black = { 
     \ 'exe': 'black',
@@ -59,21 +60,31 @@ let g:neoformat_sql_sqlformat = {
     \ 'stdin': 1,
     \ }
 
+let g:neoformat_tf_fmt = {
+    \ 'exe': 'terraform',
+    \ 'args': ['fmt', '-write', '-'],
+    \ 'stdin': 1,
+    \}
+let g:neoformat_enabled_tf = ['fmt']
+autocmd BufWritePre *.tf Neoformat
+
+" Defaults to jq
+autocmd BufWritePre *.json Neoformat
+
 let g:neoformat_enabled_yaml = ['prettier']
 let g:neoformat_enabled_sql = ['sqlformat']
 let g:neoformat_basic_format_trim = 1
+let g:neoformat_enabled_go = ['goimports']
 let g:slime_python_ipython = 1
 
 
-autocmd BufWritePre *.py Neoformat
-let g:deoplete#enable_at_startup = 1
-let g:jedi#goto_command = "<leader>d"
-let g:jedi#completions_enabled = 0
+" autocmd BufWritePre *.py Neoformat
 
 let g:blamer_enabled = 1
 let g:blamer_delay = 1000
 let g:blamer_template = '<committer> <commit-short> <summary>'
 autocmd BufWritePre *.yaml Neoformat
+autocmd BufWritePre *.go Neoformat
 
 nmap <silent> <C-d> <Plug>(pydocstring)
 nmap <silent> <C-n> :NERDTreeToggle<CR>
