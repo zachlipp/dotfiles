@@ -3,11 +3,15 @@
 # GOBIN=$GOPATH/bin
 
 export PATH=/usr/local/opt/ruby/bin:$PATH
-export PATH=/Users/zlipp/.gem/ruby/2.6.0/bin:$PATH
+export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/go/bin:$PATH
-export PATH=/Users/zlipp/Library/Python/3.9/bin:$PATH
+export PATH=$HOME/Library/Python/3.9/bin:$PATH
+export PATH=$HOME/Library/Python/3.8/bin:$PATH
+export PATH=$HOME/.pyenv:$PATH
+export PATH=$HOME/.local/bin:$PATH
 export PATH=/Library/TeX/texbin:$PATH
+export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin":$PATH
 
 # antigen {
     source ~/antigen.zsh 
