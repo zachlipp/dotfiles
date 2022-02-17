@@ -5,9 +5,6 @@ call plug#begin()
   Plug 'scrooloose/nerdtree'
   Plug 'Raimondi/delimitMate'
   Plug 'rakr/vim-one'
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'deoplete-plugins/deoplete-jedi'
-  Plug 'davidhalter/jedi-vim'
   Plug 'sbdchd/neoformat'
   Plug 'mrk21/yaml-vim'
   Plug 'heavenshell/vim-pydocstring' 
@@ -15,7 +12,6 @@ call plug#begin()
   Plug 'stsewd/isort.nvim'
   Plug 'jpalardy/vim-slime'
   Plug 'fatih/vim-go'
-  Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
   Plug 'APZelos/blamer.nvim'
   Plug 'arcticicestudio/nord-vim'
 call plug#end()
