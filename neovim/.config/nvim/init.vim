@@ -5,9 +5,6 @@ call plug#begin()
   Plug 'scrooloose/nerdtree'
   Plug 'Raimondi/delimitMate'
   Plug 'rakr/vim-one'
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'deoplete-plugins/deoplete-jedi'
-  Plug 'davidhalter/jedi-vim'
   Plug 'sbdchd/neoformat'
   Plug 'mrk21/yaml-vim'
   Plug 'heavenshell/vim-pydocstring' 
@@ -71,8 +68,6 @@ let g:slime_python_ipython = 1
 
 autocmd BufWritePre *.py Neoformat
 let g:deoplete#enable_at_startup = 1
-let g:jedi#goto_command = "<leader>d"
-let g:jedi#completions_enabled = 0
 
 let g:blamer_enabled = 1
 let g:blamer_delay = 1000

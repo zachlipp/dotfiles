@@ -8,6 +8,7 @@ export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/go/bin:$PATH
 export PATH=/Users/zlipp/Library/Python/3.9/bin:$PATH
 export PATH=/Library/TeX/texbin:$PATH
+export PATH=/usr/local/sbin:$PATH
 
 # antigen {
     source ~/antigen.zsh 
