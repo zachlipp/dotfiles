@@ -7,7 +7,7 @@ call plug#begin()
   Plug 'rakr/vim-one'
   Plug 'sbdchd/neoformat'
   Plug 'mrk21/yaml-vim'
-  Plug 'heavenshell/vim-pydocstring' 
+  Plug 'heavenshell/vim-pydocstring'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'stsewd/isort.nvim'
   Plug 'jpalardy/vim-slime'
@@ -41,7 +41,7 @@ endif
 
 " let g:neoformat_verbose = 1
 let g:neoformat_run_all_formatters = 1
-let g:neoformat_python_black = { 
+let g:neoformat_python_black = {
     \ 'exe': 'black',
     \ 'stdin': 1,
     \ 'args': ['-l 79', '--quiet', '-' ],
@@ -83,7 +83,7 @@ let g:slime_python_ipython = 1
 let g:blamer_enabled = 1
 let g:blamer_delay = 1000
 let g:blamer_template = '<committer> <commit-short> <summary>'
-autocmd BufWritePre *.yaml Neoformat
+autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufWritePre *.go Neoformat
 
 nmap <silent> <C-d> <Plug>(pydocstring)

@@ -1,7 +1,7 @@
 # Go configuration
 # GOPATH=$HOME/go
 # GOBIN=$GOPATH/bin
-
+export EDITOR=nvim
 export PATH=/usr/local/opt/ruby/bin:$PATH
 export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
 export PATH=/usr/local/bin:$PATH
@@ -52,15 +52,21 @@ SPACESHIP_KUBECTL_SHOW=true
 SPACESHIP_KUBECTL_VERSION_SHOW=false
 SPACESHIP_TIME_SHOW=true
 
+# Configure zsh
+ZSH_AUTOSUGGEST_MANUAL_REBIND=false
 
+# https://gist.github.com/ctechols/ca1035271ad134841284
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
 
 # Aliases
 source ~/.aliases.zsh
 
 # Misc
 source ~/.fzf.zsh
-autoload -Uz compinit
-compinit
 source <(kubectl completion zsh)
 
 # Pyenv
