@@ -3,6 +3,8 @@ alias bat=bat --plain
 alias vi=nvim
 alias vim=nvim
 alias tv=tidy-viewer
+alias python=python3
+alias ipython=ipython3
 
 rmc() {
   docker ps -aq | xargs docker rm

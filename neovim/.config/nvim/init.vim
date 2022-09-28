@@ -7,12 +7,11 @@ call plug#begin()
   Plug 'rakr/vim-one'
   Plug 'sbdchd/neoformat'
   Plug 'mrk21/yaml-vim'
-  Plug 'heavenshell/vim-pydocstring' 
+  Plug 'heavenshell/vim-pydocstring'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'stsewd/isort.nvim'
   Plug 'jpalardy/vim-slime'
   Plug 'fatih/vim-go'
-  Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
   Plug 'APZelos/blamer.nvim'
   Plug 'arcticicestudio/nord-vim'
 call plug#end()
@@ -40,8 +39,9 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
+" let g:neoformat_verbose = 1
 let g:neoformat_run_all_formatters = 1
-let g:neoformat_python_black = { 
+let g:neoformat_python_black = {
     \ 'exe': 'black',
     \ 'stdin': 1,
     \ 'args': ['-l 79', '--quiet', '-' ],
@@ -60,9 +60,21 @@ let g:neoformat_sql_sqlformat = {
     \ 'stdin': 1,
     \ }
 
+let g:neoformat_tf_fmt = {
+    \ 'exe': 'terraform',
+    \ 'args': ['fmt', '-write', '-'],
+    \ 'stdin': 1,
+    \}
+let g:neoformat_enabled_tf = ['fmt']
+autocmd BufWritePre *.tf Neoformat
+
+" Defaults to jq
+autocmd BufWritePre *.json Neoformat
+
 let g:neoformat_enabled_yaml = ['prettier']
 let g:neoformat_enabled_sql = ['sqlformat']
 let g:neoformat_basic_format_trim = 1
+let g:neoformat_enabled_go = ['goimports']
 let g:slime_python_ipython = 1
 
 
@@ -72,7 +84,8 @@ let g:deoplete#enable_at_startup = 1
 let g:blamer_enabled = 1
 let g:blamer_delay = 1000
 let g:blamer_template = '<committer> <commit-short> <summary>'
-autocmd BufWritePre *.yaml Neoformat
+autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre *.go Neoformat
 
 nmap <silent> <C-d> <Plug>(pydocstring)
 nmap <silent> <C-n> :NERDTreeToggle<CR>
