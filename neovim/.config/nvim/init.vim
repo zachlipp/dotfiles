@@ -20,6 +20,7 @@ filetype plugin indent on
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set spell spelllang=en_us
 set clipboard^=unnamed
 
 colorscheme nord
@@ -44,7 +45,7 @@ let g:neoformat_run_all_formatters = 1
 let g:neoformat_python_black = {
     \ 'exe': 'black',
     \ 'stdin': 1,
-    \ 'args': ['-l 79', '--quiet', '-' ],
+    \ 'args': ['-l 80', '--quiet', '-' ],
     \ }
 
 let g:neoformat_python_isort = {
@@ -78,7 +79,7 @@ let g:neoformat_enabled_go = ['goimports']
 let g:slime_python_ipython = 1
 
 
-" autocmd BufWritePre *.py Neoformat
+autocmd BufWritePre *.py Neoformat
 
 let g:blamer_enabled = 1
 let g:blamer_delay = 1000
