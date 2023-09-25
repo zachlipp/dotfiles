@@ -11,6 +11,7 @@ export PATH=/usr/local/go/bin:$PATH
 export PATH=$HOME/.pyenv:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=/Library/TeX/texbin:$PATH
+export PATH=/usr/local/sbin:$PATH
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin":$PATH
 export PATH=$HOME/my_weird_scripts:$PATH
 

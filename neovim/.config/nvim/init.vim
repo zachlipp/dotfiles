@@ -80,6 +80,7 @@ let g:slime_python_ipython = 1
 
 
 autocmd BufWritePre *.py Neoformat
+let g:deoplete#enable_at_startup = 1
 
 let g:blamer_enabled = 1
 let g:blamer_delay = 1000
