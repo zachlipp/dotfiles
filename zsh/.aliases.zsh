@@ -39,3 +39,19 @@ clean_history () {
 ignore_py() {
   curl https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore > .gitignore
 }
+
+# venv () {
+#   # Uses wd to source Python virutal envs
+#   locations=$(wd list)
+#   # Searches both shortcut name and filepath, but only counts by line
+#   match=$(echo $locations | rg $1)
+#   match_count=$(echo $match | wc -l)
+#   if [ $match_count=1 ]; then
+#     path=$(echo $match | awk '{print $3}')
+#     echo "Sourcing from "${path}"..."
+#
+#     # source ${path}/.venv/bin/activate
+#     else
+#       echo "Not found"
+#   fi
+# }
