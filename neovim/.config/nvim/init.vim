@@ -225,6 +225,7 @@ lua <<EOF
     local start_row = start_row_raw + 1
     local end_row = end_row_raw - 1
     vim.fn.MoltenEvaluateRange(start_row, end_row)
+    vim.api.nvim_win_set_cursor(0, {start_row_raw, 0})
   end
   _G.create_molten_extmark_cell_range = create_molten_extmark_cell_range
 
