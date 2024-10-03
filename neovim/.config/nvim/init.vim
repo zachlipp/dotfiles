@@ -116,7 +116,7 @@ noremap <leader>mi :MoltenInit<CR>
 noremap <leader>e :MoltenEvaluateOperator<CR>
 noremap <leader>rl :MoltenEvaluateLine<CR>
 noremap <leader>rr :MoltenReevaluateCell<CR>
-noremap <leader>rc :MoltenEvaluateVisual<CR>
+" noremap <leader>rc :<C-u>MoltenEvaluateVisual<CR>
 
 " vim.keymap.set("v", "<localleader>r", ":<C-u>MoltenEvaluateVisual<CR>gv",
 "     { silent = true, desc = "evaluate visual selection" })
@@ -209,34 +209,26 @@ lua <<EOF
   -- TODO: Just write an init.lua already
   vim.g.python3_host_prog=vim.fn.expand("~/git/rl-arena/.venv/bin/python3")
   local function create_molten_extmark_cell_range()
-    local bufnr = 0  -- Current buffer
+    local bufnr = 0
     local ns_id = vim.api.nvim_create_namespace("molten")
-    -- Get the visual selection range
-    local start_pos = vim.fn.getpos("'<")  -- Start of the visual selection
-    local end_pos = vim.fn.getpos("'>")    -- End of the visual selection
-    -- Convert them to 0-indexed (subtract 1 from line and column)
-    local start_row = start_pos[2] - 1
-    local start_col = start_pos[3] - 1
-    local end_row = end_pos[2] - 1
-    local end_col = end_pos[3] - 1
 
-    -- Ensure end_col is within the length of the line
-    local end_line_length = #vim.api.nvim_buf_get_lines(bufnr, end_row, end_row + 1, false)[1]
-    if end_col > end_line_length then
-      end_col = end_line_length
+    local start_row_raw = vim.fn.search("# ---", "Wb")
+    if past_row == 0 then
+      print("No previous occurrence of '# ---' found")
+      return
     end
-    -- Set extmark with the range
-    vim.api.nvim_buf_set_extmark(bufnr, ns_id, start_row, start_col, {
-      end_row = end_row,
-      end_col = end_col,
-      hl_group = "Visual",  -- Highlight group for the extmark
-      id = 1,               -- Optional: ID for this extmark
-    })
-    print("Extmark set from row " .. start_row .. " to row " .. end_row)
+    local end_row_raw = vim.fn.search("# ---", "W")
+    if end_row_raw == 0 then
+      print("No next occurrence of '# ---' found")
+      return
+    end
+    local start_row = start_row_raw + 1
+    local end_row = end_row_raw - 1
+    vim.fn.MoltenEvaluateRange(start_row, end_row)
   end
   _G.create_molten_extmark_cell_range = create_molten_extmark_cell_range
 
-  vim.api.nvim_set_keymap('v', '<leader>m', ":<C-u>lua create_molten_extmark_cell_range()<CR>", { noremap = true, silent = true })
+  vim.api.nvim_set_keymap('n', '<leader>m', ":<C-u>lua create_molten_extmark_cell_range()<CR>", { noremap = true, silent = false })
 
 
 EOF
