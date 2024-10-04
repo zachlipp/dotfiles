@@ -112,10 +112,24 @@ nmap <silent> <C-n> :NERDTreeToggle<CR>
 
 
 " Molten
-noremap <leader>mi :MoltenInit<CR>
+" noremap <leader>mi :MoltenInit<CR>
 noremap <leader>e :MoltenEvaluateOperator<CR>
 noremap <leader>rl :MoltenEvaluateLine<CR>
 noremap <leader>rr :MoltenReevaluateCell<CR>
+lua <<EOF
+vim.keymap.set("n", "<localleader>mi", function()
+  local venv = os.getenv("VIRTUAL_ENV")
+  if venv ~= nil then
+    -- format /some/path/to/kernel-name/.venv
+    kernel = string.match(venv, ".+/(.+)/.+")
+    vim.cmd(("MoltenInit %s"):format(kernel))
+  else
+    vim.cmd("MoltenInit python3")
+  end
+end, { desc = "Initialize Molten for python3", silent = true })
+EOF
+
+
 " noremap <leader>rc :<C-u>MoltenEvaluateVisual<CR>
 
 " vim.keymap.set("v", "<localleader>r", ":<C-u>MoltenEvaluateVisual<CR>gv",
@@ -207,7 +221,7 @@ lua <<EOF
 
   -- MOLTEN STUFF
   -- TODO: Just write an init.lua already
-  vim.g.python3_host_prog=vim.fn.expand("~/git/rl-arena/.venv/bin/python3")
+  vim.g.mapleader = ','
   local function create_molten_extmark_cell_range()
     local bufnr = 0
     local ns_id = vim.api.nvim_create_namespace("molten")
@@ -225,11 +239,9 @@ lua <<EOF
     local start_row = start_row_raw + 1
     local end_row = end_row_raw - 1
     vim.fn.MoltenEvaluateRange(start_row, end_row)
-    vim.api.nvim_win_set_cursor(0, {start_row_raw, 0})
+    vim.api.nvim_win_set_cursor(0, {start_row, 0})
   end
   _G.create_molten_extmark_cell_range = create_molten_extmark_cell_range
 
   vim.api.nvim_set_keymap('n', '<leader>m', ":<C-u>lua create_molten_extmark_cell_range()<CR>", { noremap = true, silent = false })
-
-
 EOF
