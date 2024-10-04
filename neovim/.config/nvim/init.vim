@@ -93,13 +93,10 @@ autocmd BufWritePre *.go Neoformat
 " Defaults to jq
 autocmd BufWritePre *.json Neoformat
 
-
 let g:neoformat_enabled_yaml = ['prettier']
 let g:neoformat_enabled_sql = ['sqlformat']
 let g:neoformat_basic_format_trim = 1
 let g:neoformat_enabled_go = ['goimports', 'gofmt']
-
-
 
 autocmd BufWritePre *.py Neoformat
 
@@ -240,6 +237,7 @@ lua <<EOF
     local end_row = end_row_raw - 1
     vim.fn.MoltenEvaluateRange(start_row, end_row)
     vim.api.nvim_win_set_cursor(0, {start_row, 0})
+    vim.cmd.MoltenShowOutput()
   end
   _G.create_molten_extmark_cell_range = create_molten_extmark_cell_range
 
