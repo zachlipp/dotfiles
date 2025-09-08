@@ -90,3 +90,7 @@ $character\
 [kubernetes]
 disabled = false
 format = 'on [⛵ ($namespace) \($context\)](dimmed green) '
+
+[python]
+format = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+python_binary = 'python3'

@@ -16,17 +16,17 @@ local function venv_has_required_packages(pkgs)
 	return exit_code == 0
 end
 
--- local function use_uv_venv()
---   -- TODO: Assumes you are at the root of the project /
---   --       in the directory where the venv is located
---   local venv_defined = exists(".venv")
---   if venv then
---     vim.fn.system("source .venv/bin/activate")
---   else
---     vim.fn.system("uv venv")
---     vim.fn.system("source .venv/bin/activate")
---   end
--- end
+local function use_uv_venv()
+	-- TODO: Assumes you are at the root of the project /
+	--       in the directory where the venv is located
+	local venv_defined = exists(".venv")
+	if venv then
+		vim.fn.system("source .venv/bin/activate")
+	else
+		vim.fn.system("uv venv")
+		vim.fn.system("source .venv/bin/activate")
+	end
+end
 
 -- Use kernel matching virtualenv
 vim.keymap.set("n", "<localleader>mi", function()

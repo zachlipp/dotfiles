@@ -9,7 +9,6 @@ export PATH=/usr/local/opt/ruby/bin:$PATH
 export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/go/bin:$PATH
-export PATH=$HOME/.pyenv:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=/Library/TeX/texbin:$PATH
 export PATH=/usr/local/sbin:$PATH
@@ -19,8 +18,11 @@ export PATH=$HOME/.modular:$PATH
 export PATH="/Users/zlipp/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 export PATH=$HOME/git/emsdk:$PATH
 export PATH=$HOME/git/emsdk/upstream/emscripten:$PATH
+export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
 
 export MODULAR_HOME=$HOME/.modular
+# No reason to gnu stow this
+export STARSHIP_CONFIG=$HOME/dotfiles/starship/starship.toml
 
 # Bundles
 zplug "ael-code/zsh-colored-man-pages"
@@ -51,18 +53,11 @@ export VIMRUNTIME=~/.local/share/nvim/nvim/runtime
 
 # Pyenv
 source ~/.iterm2_shell_integration.zsh
-# eval "$(pyenv init --path)"
-# eval "$(pyenv init -)"
-# if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 export PATH="$HOME/.tfenv/bin:$PATH"
 
 eval "$(starship init zsh)"
-alias ls=exa
 eval "$(/opt/homebrew/bin/brew shellenv)"
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 . "$HOME/.cargo/env"
 export PATH="/opt/homebrew/opt/dart@2.19/bin:$PATH"
 

@@ -1,10 +1,12 @@
-alias cat=bat --plain
-alias bat=bat --plain
+alias cat='bat --plain'
+alias bat='bat --plain'
 alias vi=nvim
 alias vim=nvim
 alias tv=tidy-viewer
 alias python=python3
 alias ipython=ipython3
+alias ls='ls --color=auto'
+
 
 rmc() {
   docker ps -aq | xargs docker rm
@@ -40,18 +42,36 @@ ignore_py() {
   curl https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore > .gitignore
 }
 
-# venv () {
-#   # Uses wd to source Python virutal envs
-#   locations=$(wd list)
-#   # Searches both shortcut name and filepath, but only counts by line
-#   match=$(echo $locations | rg $1)
-#   match_count=$(echo $match | wc -l)
-#   if [ $match_count=1 ]; then
-#     path=$(echo $match | awk '{print $3}')
-#     echo "Sourcing from "${path}"..."
-#
-#     # source ${path}/.venv/bin/activate
-#     else
-#       echo "Not found"
-#   fi
-# }
+uvv() {
+  if [ ! -d .venv ]; then
+    uv venv
+  else
+    echo "A virtual environment already exists in this directory"
+  fi
+}
+
+# https://stackoverflow.com/a/50830617/4738478
+function start_venv_if_exists() {
+  if [ -d .venv ] ; then
+		source ./.venv/bin/activate
+	fi
+}
+
+# Start on new session (i.e. new tab in iterm)
+start_venv_if_exists
+
+function cd() {
+  builtin cd "$@"
+  if [[ -z "$VIRTUAL_ENV" ]] ; then
+    ## If env folder is found then activate the vitualenv
+		start_venv_if_exists
+  else
+    ## check the current folder belong to earlier VIRTUAL_ENV folder
+    # if yes then do nothing
+    # else deactivate
+      parentdir="$(dirname "$VIRTUAL_ENV")"
+      if [[ "$PWD"/ != "$parentdir"/* ]] ; then
+        deactivate
+      fi
+  fi
+}
