@@ -33,3 +33,35 @@ require("cmp").setup({
 		{ name = "orgmode" },
 	},
 })
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+	pattern = vim.fn.expand("~") .. "/git/systems_programming_class/**.c",
+	callback = function()
+		vim.cmd("rightbelow vsplit")
+		-- swap to Docker
+		-- vim.cmd("terminal gcc % -o %:r && %:r")
+		-- See https://stackoverflow.com/a/36501915
+		local currdir = vim.fn.expand("%:.:h")
+		local filename_without_extension = vim.fn.expand("%:t:r")
+		local build_dir = "out"
+		local build_path = currdir .. "/" .. build_dir .. "/" .. filename_without_extension
+		vim.cmd(
+			"terminal docker exec -t -w /home compiler bash -c 'gcc -Wall % -o "
+				.. build_path
+				.. " && "
+				.. build_path
+				.. "'"
+		)
+		vim.schedule(function()
+			vim.cmd("wincmd w")
+			vim.cmd("startinsert")
+		end)
+	end,
+})
+
+--		local term_autocmd = vim.api.nvim_create_autocmd("TermOpen", {
+--			once = true, -- Only trigger once, then auto-remove
+--			callback = function()
+--				vim.cmd("wincmd w")
+--			end,
+--		})
