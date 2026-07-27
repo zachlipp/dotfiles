@@ -19,11 +19,16 @@ export PATH="/Users/zlipp/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 export PATH=$HOME/git/emsdk:$PATH
 export PATH=$HOME/git/emsdk/upstream/emscripten:$PATH
 export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
+export PATH="$PATH:$HOME/.local/nvim-macos-arm64/bin"
+export PATH="$PATH:/opt/X11/bin"
 
 export MODULAR_HOME=$HOME/.modular
 # No reason to gnu stow this
 export STARSHIP_CONFIG=$HOME/dotfiles/starship/starship.toml
 
+if type brew &>/dev/null; then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
 # Bundles
 zplug "ael-code/zsh-colored-man-pages"
 zplug "mfaerevaag/wd"
@@ -48,8 +53,6 @@ ZSH_AUTOSUGGEST_MANUAL_REBIND=false
 source ~/.fzf.zsh
 source <(kubectl completion zsh)
 source <(kubebuilder completion zsh)
-
-export VIMRUNTIME=~/.local/share/nvim/nvim/runtime
 
 # Pyenv
 source ~/.iterm2_shell_integration.zsh

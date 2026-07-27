@@ -6,6 +6,8 @@ alias tv=tidy-viewer
 alias python=python3
 alias ipython=ipython3
 alias ls='ls --color=auto'
+alias m=make
+alias j=just
 
 
 rmc() {
@@ -74,4 +76,8 @@ function cd() {
         deactivate
       fi
   fi
+}
+
+function csv_to_yaml() {
+	awk -F',' '{ for (i=1; i<=NF; i++) printf "- %s\n", $i }'
 }

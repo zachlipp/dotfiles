@@ -27,6 +27,19 @@ vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" 
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 vim.api.nvim_set_keymap("n", "<leader>di", "VimspectorBalloonEval", { desc = "yo" })
 
+local function read_mode()
+	local f = io.open(vim.fn.expand("~/.config/theme-mode"), "r")
+	if not f then
+		return "dark"
+	end
+	local mode = f:read("*l")
+	f:close()
+	return mode == "light" and "light" or "dark"
+end
+
+vim.o.background = read_mode()
+vim.cmd.colorscheme(vim.o.background == "light" and "dayfox" or "nordfox")
+
 --for normal mode - the word under the cursor
 vim.api.nvim_create_autocmd("BufWritePost", {
 	pattern = vim.fn.expand("~") .. "/git/systems_programming_class/**.c",
