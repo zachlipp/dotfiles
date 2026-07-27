@@ -6,12 +6,16 @@ return {
 			lua = { "stylua" },
 			python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
 			javascript = { "prettier" },
+			typescript = { "prettier" },
 			css = { "prettier" },
+			html = { "prettier" },
+			json = { "jq" },
 			terraform = { "terraform_fmt" },
 			go = { "goimports", "gofmt" },
-			-- TODO: Figure out helm
-			-- yaml = { "prettier" },
+			c = { "clang-format" },
+			yaml = { "yamlfmt" },
 			sql = { "sqlformat" },
+			gdscript = { "gdformat" },
 			["*"] = { "trim_whitespace" },
 		},
 		format_on_save = {
