@@ -16,18 +16,6 @@ local function venv_has_required_packages(pkgs)
 	return exit_code == 0
 end
 
-local function use_uv_venv()
-	-- TODO: Assumes you are at the root of the project /
-	--       in the directory where the venv is located
-	local venv_defined = exists(".venv")
-	if venv then
-		vim.fn.system("source .venv/bin/activate")
-	else
-		vim.fn.system("uv venv")
-		vim.fn.system("source .venv/bin/activate")
-	end
-end
-
 -- Use kernel matching virtualenv
 vim.keymap.set("n", "<localleader>mi", function()
 	local venv = os.getenv("VIRTUAL_ENV")
@@ -40,7 +28,7 @@ vim.keymap.set("n", "<localleader>mi", function()
 		else
 			-- format /some/path/to/kernel-name/.venv
 			-- used by uv
-			kernel = string.match(venv, ".+/(.+)/.+")
+			local kernel = string.match(venv, ".+/(.+)/.+")
 			create_jupyter_kernel(kernel)
 			vim.cmd(("MoltenInit %s"):format(kernel))
 		end
@@ -55,7 +43,7 @@ local function create_cell_between_delimiters()
 	local ns_id = vim.api.nvim_create_namespace("molten")
 
 	local start_row_raw = vim.fn.search("# ---", "Wb")
-	if past_row == 0 then
+	if start_row_raw == 0 then
 		print("No previous occurrence of '# ---' found")
 		return
 	end
@@ -81,7 +69,6 @@ vim.api.nvim_set_keymap(
 
 return {
 	"benlubas/molten-nvim",
-	config = config,
 	dependencies = {
 		"3rd/image.nvim",
 	},
