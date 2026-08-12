@@ -23,8 +23,6 @@ export PATH="$PATH:$HOME/.local/nvim-macos-arm64/bin"
 export PATH="$PATH:/opt/X11/bin"
 
 export MODULAR_HOME=$HOME/.modular
-# No reason to gnu stow this
-export STARSHIP_CONFIG=$HOME/dotfiles/starship/starship.toml
 
 if type brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
