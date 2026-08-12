@@ -1,5 +1,3 @@
-alias cat='bat --plain'
-alias bat='bat --plain'
 alias vi=nvim
 alias vim=nvim
 alias tv=tidy-viewer
@@ -9,6 +7,9 @@ alias ls='ls --color=auto'
 alias m=make
 alias j=just
 
+dt() {
+	docker exec compiler make test
+}
 
 rmc() {
   docker ps -aq | xargs docker rm
