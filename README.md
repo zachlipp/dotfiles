@@ -8,6 +8,7 @@ top-level directory mirrors the paths it should occupy under `$HOME`.
 ## What's in here
 
 - [`claude -> ~/.claude`](claude)
+- [`hammerspoon -> ~/.hammerspoon`](hammerspoon)
 - [`neovim -> ~/.config/nvim`](neovim) (This has its own [`README`](neovim/.config/nvim/README.md))
 - [`starship -> ~/.config/starship.toml`](starship)
 - [`zsh -> ~/.zshrc + ~/.aliases.zsh`](zsh)
@@ -19,7 +20,7 @@ top-level directory mirrors the paths it should occupy under `$HOME`.
 ```bash
 git clone https://github.com/zachlipp/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-stow zsh neovim starship claude vale
+stow zsh neovim starship claude vale hammerspoon
 ```
 
 Then we have the `not_stowed` files:
