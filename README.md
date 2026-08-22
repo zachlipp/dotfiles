@@ -1,11 +1,12 @@
 # dotfiles
 
+![](./not_stowed/figs/depressed.webp)
+
 Personal configuration.
 
-The repo is laid out as [GNU Stow](https://www.gnu.org/software/stow/) packages — each
-top-level directory mirrors the paths it should occupy under `$HOME`.
+The repo is laid out as [GNU Stow](https://www.gnu.org/software/stow/) packages — each top-level directory mirrors the paths it should occupy under `$HOME`.
 
-## What's in here
+## Symlinks
 
 - [`claude -> ~/.claude`](claude)
 - [`hammerspoon -> ~/.hammerspoon`](hammerspoon)
@@ -13,7 +14,7 @@ top-level directory mirrors the paths it should occupy under `$HOME`.
 - [`starship -> ~/.config/starship.toml`](starship)
 - [`zsh -> ~/.zshrc + ~/.aliases.zsh`](zsh)
 - [`vale -> ~/.vale.ini`](vale)
-- [`not_stowed`](not_stowed): You're not going to believe this - this is configuration I do not manage with GNU Stow.
+- [`not_stowed`](not_stowed): You're not going to believe this - this is configuration I don't manage with GNU Stow.
 
 ## Installing on a new machine
 
