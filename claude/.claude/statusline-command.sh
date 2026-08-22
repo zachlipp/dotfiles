@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Claude Code statusline.
 #
-# Renders: <starship prompt for the session's cwd>  <context used>/<context total>
+# Renders: <starship prompt for the session's cwd>  <progress bar>  <context used>/<context total>
 #
 # The context segment reflects tokens *currently occupying the context
 # window* (not cumulative session tokens). Both "used" and "total" are
@@ -14,6 +14,9 @@
 # in your shell profile before starting Claude Code.
 # ---------------------------------------------------------------------------
 CONTEXT_WARN_THRESHOLD="${CONTEXT_WARN_THRESHOLD:-150000}"
+
+# Width of the progress bar, in characters.
+CONTEXT_BAR_WIDTH="${CONTEXT_BAR_WIDTH:-20}"
 
 # The statusline may run with a trimmed PATH; make sure the usual Homebrew /
 # local prefixes are visible so starship and jq are found.
@@ -140,18 +143,52 @@ fmt_tokens() {
   }'
 }
 
+# The bar is scaled to 2x the warn threshold, not the full window: past that
+# point the exact number stops mattering and the bar just reads full.
+# Emits a colored bar with a dotted tick marking the warn threshold. Because
+# the scale is 2x the threshold, that tick always lands at the midpoint.
+make_bar() {
+  awk -v used="$1" -v scale="$2" -v w="$3" -v color="$4" 'BEGIN{
+    esc = sprintf("%c", 27);
+    body = esc "[" color "m";
+    reset = esc "[0m";
+    tick = reset esc "[2m┊" body;
+    split("▏ ▎ ▍ ▌ ▋ ▊ ▉", eighth, " ");
+    frac = used / scale;
+    if (frac > 1) frac = 1;
+    if (frac < 0) frac = 0;
+    cells = frac * w;
+    full = int(cells);
+    part = int((cells - full) * 8);
+    mark = int(w / 2 + 0.5);
+    printf "%s", body;
+    for (i = 0; i < w; i++) {
+      if (i == mark) printf "%s", tick;
+      if (i < full) printf "█";
+      else if (i == full && part > 0) printf "%s", eighth[part];
+      else printf "░";
+    }
+    printf "%s", reset;
+  }'
+}
+
+bar_segment=""
 context_segment=""
 if [ -n "$used_tokens" ]; then
   used_fmt="$(fmt_tokens "$used_tokens")"
   total_fmt="$(fmt_tokens "$ctx_size")"
   if [ "$used_tokens" -ge "$CONTEXT_WARN_THRESHOLD" ]; then
+    bar_color="1;31"
     context_segment="$(printf '\033[1;31m%s/%s\033[0m' "$used_fmt" "$total_fmt")"
   else
+    bar_color="32"
     context_segment="$(printf '\033[2m%s/%s\033[0m' "$used_fmt" "$total_fmt")"
   fi
+  bar_segment="$(make_bar "$used_tokens" "$(( CONTEXT_WARN_THRESHOLD * 2 ))" "$CONTEXT_BAR_WIDTH" "$bar_color")"
 fi
 
 # --- Output --------------------------------------------------------------------
 out="$prompt_segment"
+[ -n "$bar_segment" ] && out="$out  $bar_segment"
 [ -n "$context_segment" ] && out="$out  $context_segment"
 printf '%s\n' "$out"
