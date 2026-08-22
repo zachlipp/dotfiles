@@ -51,6 +51,22 @@ local function accepted_words()
 	return words
 end
 
+-- Vale re-reads the vocabulary on every run, so accepting a word only needs a re-lint.
+local function relint()
+	local ok, client = pcall(require, "null-ls.client")
+	if not ok then
+		return
+	end
+	local methods = require("null-ls.methods")
+	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buftype == "" then
+			client.notify_client(methods.lsp.DID_OPEN, {
+				textDocument = { uri = vim.uri_from_bufnr(buf) },
+			})
+		end
+	end
+end
+
 local function accept(word)
 	word = vim.trim(word)
 	if word == "" then
@@ -81,6 +97,7 @@ local function accept(word)
 	f:write(word .. "\n")
 	f:close()
 
+	relint()
 	vim.notify(("Added %q to the Vale vocabulary"):format(word), vim.log.levels.INFO)
 end
 
