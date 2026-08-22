@@ -8,8 +8,9 @@ local function externalConnected()
 	for _, screen in ipairs(hs.screen.allScreens()) do
 		local name = screen:name()
 		if name then
-			for _, MONITOR in ipairs(EXTERNAL_MONITORS) do
-				if name:find(MONITOR) then
+			name = name:lower()
+			for _, monitor in ipairs(EXTERNAL_MONITORS) do
+				if name:find(monitor:lower(), 1, true) then
 					return true
 				end
 			end
