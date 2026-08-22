@@ -15,6 +15,17 @@ rmc() {
   docker ps -aq | xargs docker rm
 }
 
+# `task done` also runs `task list`
+# `task list` runs `clear` beforehand
+task() {
+    local skip=(add log annotate modify)
+    [[ " $* " == *" list "* || "$*" == *list ]] && [[ "$1" != ${(j:|:)skip} ]] && clear
+    command task "$@"
+    local rc=$?
+    [[ " $* " == *" done "* && "$1" != ${(j:|:)skip} ]] && { clear; command task list; }
+    return $rc
+}
+
 rpcp() {
   realpath "$1" | pbcopy
 }
