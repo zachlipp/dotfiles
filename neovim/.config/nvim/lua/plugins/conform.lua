@@ -1,6 +1,7 @@
 return {
 	"stevearc/conform.nvim",
-	event = { "BufWritePre" },
+	event = { "BufReadPre", "BufNewFile" },
+	cmd = "ConformInfo",
 	opts = {
 		formatters_by_ft = {
 			lua = { "stylua" },
@@ -15,7 +16,8 @@ return {
 			terraform = { "terraform_fmt" },
 			go = { "goimports", "gofmt" },
 			c = { "clang-format" },
-			yaml = { "yamlfmt" },
+			-- Prevents regressions from trailing whitespace in multiline string
+			yaml = { "trim_whitespace", "yamlfmt" },
 			sql = { "sqlformat" },
 			gdscript = { "gdformat" },
 			["*"] = { "trim_whitespace" },
