@@ -127,6 +127,7 @@ local function prompt(default, on_confirm)
 			return
 		end
 		done = true
+		vim.cmd("stopinsert")
 		local text = vim.api.nvim_buf_get_lines(buf, 0, 1, false)[1] or ""
 		if vim.api.nvim_win_is_valid(win) then
 			vim.api.nvim_win_close(win, true)
