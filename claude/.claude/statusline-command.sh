@@ -13,7 +13,7 @@
 # noticeable model degradation. Override by exporting CONTEXT_WARN_THRESHOLD
 # in your shell profile before starting Claude Code.
 # ---------------------------------------------------------------------------
-CONTEXT_WARN_THRESHOLD="${CONTEXT_WARN_THRESHOLD:-150000}"
+CONTEXT_WARN_THRESHOLD="${CONTEXT_WARN_THRESHOLD:-200000}"
 
 # Width of the progress bar, in characters.
 CONTEXT_BAR_WIDTH="${CONTEXT_BAR_WIDTH:-20}"
