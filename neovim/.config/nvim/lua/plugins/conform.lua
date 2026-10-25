@@ -3,6 +3,13 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	cmd = "ConformInfo",
 	opts = {
+		formatters = {
+			expand_tabs = {
+				command = "expand",
+				args = { "-t", "4" },
+				stdin = true,
+			},
+		},
 		formatters_by_ft = {
 			lua = { "stylua" },
 			python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
@@ -20,7 +27,9 @@ return {
 			yaml = { "trim_whitespace", "yamlfmt" },
 			sql = { "sqlformat" },
 			gdscript = { "gdformat" },
-			["*"] = { "trim_whitespace" },
+			typst = { "typstyle" },
+			["*"] = { "trim_whitespace", "expand_tabs" },
+			make = {},
 		},
 		format_on_save = {
 			-- These options will be passed to conform.format()

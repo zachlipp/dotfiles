@@ -44,8 +44,18 @@ return {
 			cmd = vim.lsp.rpc.connect("127.0.0.1", 6005),
 		})
 
+		vim.lsp.config("tinymist", {
+			settings = {
+				typst = {
+					formatterMode = "typstyle",
+					exportPdf = "onType",
+					semanticTokens = "disable",
+				},
+			},
+		})
+
 		-- Enable
-		vim.lsp.enable({ "pyright", "ts_ls", "gopls", "gdscript" })
+		vim.lsp.enable({ "pyright", "ts_ls", "gopls", "gdscript", "tinymist" })
 
 		-- Keymaps
 		vim.api.nvim_create_autocmd("LspAttach", {
